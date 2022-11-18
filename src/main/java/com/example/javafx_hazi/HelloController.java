@@ -41,12 +41,14 @@ public class HelloController {
     public void quadraticEquation(double fx, double sx, double tx){ //first x, second x, third x
         //(-b +- sqrt(b^2 - 4 * a * c)) / 2a
 
-        double x1sum = -sx + Math.sqrt(Math.pow(sx, 2) - (4 * fx * tx)) / (2 * fx);
-        double x2sum = -sx - Math.sqrt(Math.pow(sx, 2) - (4 * fx * tx)) / (2 * fx);
-        System.out.println(x1sum);
-        System.out.println(x2sum);
+        double inSqrt = Math.pow(sx, 2) - (4 * fx * tx);
+        double x1sum = -sx + Math.sqrt(inSqrt) / (2 * fx);
+        double x2sum = -sx - Math.sqrt(inSqrt) / (2 * fx);
 
-        if(x1sum < 0){
+        if(inSqrt < 0){
+            System.out.println("Ez az egyenlet nem oldható meg a valós számok halmazán.");
+        }
+        else if(x1sum < 0){
             xlabelone.setVisible(false);
             xlabeltwo.setText("x2 = " + x2sum);
         }
